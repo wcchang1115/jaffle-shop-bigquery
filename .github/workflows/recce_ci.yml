@@ -46,6 +46,18 @@ jobs:
     needs: prepare-artifacts
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
       - uses: "google-github-actions/auth@v2"
         id: google-auth
         with:
