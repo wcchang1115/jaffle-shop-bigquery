@@ -66,6 +66,9 @@ jobs:
       - name: Download artifactss
         uses: actions/download-artifact@v4
 
+      - name: Update dbt dependencies
+        run: dbt deps
+
       - name: Run Recce in cloud mode
         env:
           BQ_PROJECT: ${{ steps.google-auth.outputs.project_id }}
